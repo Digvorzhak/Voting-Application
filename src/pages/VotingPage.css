@@ -1,0 +1,43 @@
+/* <div className="container">
+<h1>{name}</h1>
+<img src={img}></img>
+<span>Votes {votes}</span>
+</div> */
+
+body {
+  background: rgb(61, 34, 108);
+  background: radial-gradient(circle, rgba(61, 34, 108, 1) 0%, rgba(101, 9, 121, 1) 35%, rgba(50, 226, 244, 1) 100%);
+  height: 100vh;
+  width: 100vw;
+  font-family: "Montserrat", sans-serif;
+  color: #ffffff;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 400px;
+  border: 1px solid white;
+  margin-left: 30px;
+}
+
+img {
+  margin-bottom: 15px;
+  width: 120px;
+  height: 120px;
+}
+
+button {
+  color: #ffffff;
+  height: 60px;
+}
