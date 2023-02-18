@@ -1,10 +1,12 @@
 import { useState } from "react";
 import "./LoginPage.css";
-
+import { PAGES } from "../constants";
 import data from "../data";
 import LoginForm from "../components/LoginComponents/LoginForm";
 import Logo from "../components/LoginComponents/Logo";
 // import validation from "../validation";
+
+const [, voting] = PAGES;
 
 const Login = ({ setPage }) => {
   const [values, setValues] = useState({
@@ -76,18 +78,16 @@ const Login = ({ setPage }) => {
       setIsLoading(false);
       // setIsError(true);
       return;
-    } else {
-      localStorage.setItem("userData", JSON.stringify(values));
-
-      setTimeout(() => {
-        window.location.reload(false);
-      }, 2000);
     }
+  };
+  const handleLogin = () => {
+    localStorage.setItem("userData", JSON.stringify(values));
+    setPage(voting);
   };
 
   return (
     <div className="container">
-      <Logo />
+      {/* <Logo /> */}
       <p>Welcome</p>
       <form className="form" onSubmit={onSubmit}>
         {/* email field */}
@@ -96,7 +96,7 @@ const Login = ({ setPage }) => {
         {/* password field */}
         <LoginForm error={passwordError} type="password" name="password" value={values.password} handleChange={handleChange} />
         {passwordError.isError && <small>{passwordError.message}</small>}
-        <button type="submit" className="btn btn-block" disabled={isLoading}>
+        <button onClick={handleLogin} type="submit" className="btn btn-block" disabled={isLoading}>
           {isLoading ? "loading..." : "Log In"}
         </button>
       </form>

@@ -13,7 +13,7 @@ const userData = localStorage.getItem("userData") ? JSON.parse(localStorage.getI
 const App = () => {
   const [page, setPage] = useState("login");
 
-  const [login, admin, voting] = PAGES;
+  const [login, voting] = PAGES;
 
   useEffect(() => {
     if (!userData) {
@@ -23,15 +23,16 @@ const App = () => {
     }
   }, [login, voting]);
 
-  // switch (page) {
-  //   case voting:
-  //     return <Login setPage={setPage} />;
-  //   case admin:
-  //     return <Voting setPage={setPage} />;
-  //   default:
-  //     return <Login setPage={setPage} />;
-  // }
-  return <Voting></Voting>;
+  switch (page) {
+    case login:
+      return <Login setPage={setPage} />;
+    case voting:
+      return <Voting setPage={setPage} />;
+    default:
+      return <Login setPage={setPage} />;
+  }
+  // return <Voting></Voting>;
+  // return <Login></Login>;
 };
 
 export default App;
